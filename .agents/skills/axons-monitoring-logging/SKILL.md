@@ -1,5 +1,7 @@
+---
 name: axons-monitoring-logging
 description: Structured JSON logging, hash-chained audit trails, periodic log signing, rate limiting, connection monitoring, and graceful degradation for AXONS. Use when implementing observability, security audit, or operational monitoring.
+---
 
 # AXONS Monitoring & Logging
 

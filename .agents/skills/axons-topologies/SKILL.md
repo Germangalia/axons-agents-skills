@@ -1,5 +1,7 @@
+---
 name: axons-topologies
 description: AXONS network topology specifications including Peer-to-Peer (P2P), Client-to-Server (C2S), Server-to-Server (S2S) federation, and gateway patterns. Use when designing deployment architecture or implementing topology-specific behavior.
+---
 
 # AXONS Topologies
 

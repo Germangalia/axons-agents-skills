@@ -1,5 +1,7 @@
+---
 name: axons-transport-websocket
 description: WebSocket binding, connection lifecycle, subprotocol negotiation, ping/pong keep-alive, and reconnection strategies for AXONS. Use when implementing WebSocket handlers, connection state machines, or transport-level resilience.
+---
 
 # AXONS WebSocket Transport
 

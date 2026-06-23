@@ -1,5 +1,7 @@
+---
 name: axons-data-types
 description: AXONS data type system including primitives, string types (CiString, UUID v7), binary (Base64URL), temporal types (ISO 8601), enumerations, and validation rules. Use when defining message schemas, validating data, or implementing serialization.
+---
 
 # AXONS Data Types
 

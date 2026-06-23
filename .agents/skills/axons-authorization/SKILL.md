@@ -1,5 +1,7 @@
+---
 name: axons-authorization
-description: OAuth 2.0 simplified authorization model for AXONS session-based authentication, opaque access tokens, per-message validation, and identity extraction from mTLS certificates.
+description: OAuth 2.0 simplified authorization model, opaque session-bound access tokens, per-message token validation, and identity extraction from mTLS certificates for AXONS. Use when implementing session management, token issuance, or authorization checks.
+---
 
 # AXONS Authorization
 
@@ -8,64 +10,104 @@ description: OAuth 2.0 simplified authorization model for AXONS session-based au
 Activate this skill when the task involves:
 - Session establishment and token exchange
 - Access token generation and validation
-- Authorization decision flow (mTLS → InitRequest → token issuance)
+- Authorization decision flow (mTLS → InitRequest → token)
 - Identity extraction from X.509 certificates
 - Per-message token validation
 
-## Key Concepts
+## Key References
 
-AXONS authorization operates at the transport/session boundary:
+- `content/docs/axons-specification/04-authorization/04-01-authorization-model.md`
+- `content/docs/axons-specification/04-authorization/04-02-session-lifecycle.md`
 
-- Identity is derived from mTLS X.509 certificates
-- Sessions are bound to opaque access tokens
-- Every message (except InitRequest) requires token validation
+## Scope
+
+AXONS authorization operates **exclusively at the transport layer**. Application-layer authorization (roles, permissions, ACLs) is delegated to subprotocols.
+
+| Layer | Mechanism | Purpose | Scope |
+|-------|-----------|---------|-------|
+| Transport | mTLS certificate validation | Verify entity identity | Connection-level |
+| Session | Access token validation | Authorize session | Session-level |
+
+## AXONS Does NOT Define
+
+- Roles or role hierarchies
+- Permission matrices
+- Access control lists
+- Resource authorization rules
+- Application-specific scopes
+
+## Authorization Components
+
+| Component | Responsibility |
+|-----------|---------------|
+| Certificate Validator | Validates X.509 certs during mTLS |
+| Identity Extractor | Extracts identity from cert subject |
+| Session Manager | Manages session lifecycle and token validation |
+| Authorization Context | Packages identity info for upper layers |
+
+## Access Token Properties
+
+| Property | Value | Level |
+|----------|-------|-------|
+| Type | Opaque (not JWT) | MUST |
+| Length | 32+ bytes (43 chars Base64URL) | MUST |
+| Encoding | Base64URL, no padding | MUST |
+| Character set | `[A-Za-z0-9_-]` | MUST |
+| Generation | CSPRNG | MUST |
+| Lifetime | Session duration | MUST |
+| Transmission | Message header `accessToken` field | MUST |
+| Storage | Server-side token store | MUST |
 
 ## Authorization Flow
 
-1. mTLS handshake establishes secure identity
-2. InitRequest is sent with entityId and protocol capabilities
-3. Server issues sessionId + opaque accessToken
-4. All subsequent messages include accessToken
-5. Token is revoked on disconnect or explicit termination
+1. **mTLS Handshake**: Both entities present and validate X.509 certificates
+2. **InitRequest**: Entity 1 sends `InitRequest` with entityId, supported protocols
+3. **Token Generation**: Entity 2 generates opaque access token bound to session
+4. **InitResponse**: Entity 2 responds with `sessionId`, `accessToken`, selected protocol
+5. **Per-Message Validation**: Every subsequent message includes `accessToken` in header
+6. **Token Revocation**: Token invalidated on disconnect or explicit revocation
 
-## Access Token Rules
+## Identity Data Model
 
-- MUST be opaque (not JWT)
-- MUST be cryptographically random
-- MUST be session-bound
-- MUST be validated per message
-- MUST be revoked on session end
+### identity
 
-## Identity Model
+| Field | Type | Description | Example |
+|-------|------|-------------|---------|
+| subjectId | UUID v7 | From cert Subject CN | `0191a7e0-...` |
+| certificateThumbprint | string | SHA-256 hash of cert | `sha256:4rnc...` |
+| entityType | enum | Device, Server, Peer | `Device` |
+| topology | enum | ClientToServer, PeerToPeer, ServerToServer | `ClientToServer` |
 
-- Identity is extracted ONLY from X.509 certificates
-- No self-declared identity is allowed
-- Each identity is bound to a session lifecycle
+### authorizationContext
 
-## Scope Rules
+| Field | Type | Description |
+|-------|------|-------------|
+| identity | IdentityContextType | Identity from certificate |
+| sessionId | UUID v7 | Unique session identifier |
+| accessToken | string | Opaque bearer token |
+| authorizedAt | dateTime | When authorization established |
+| expiresAt | dateTime | Token expiration |
 
-AXONS authorization defines ONLY:
+## Per-Message Validation Rule
 
-- Transport-level authentication
-- Session-level authorization
+Every incoming request MUST include a valid `accessToken` in the header. The receiving entity validates the token before processing. The only exception is `InitRequest` (sent before token issuance).
 
-It does NOT define:
+## Conformance Requirements
 
-- Roles
-- Permissions
-- ACLs
-- Application-level access control
+| ID | Requirement | Level |
+|----|-------------|-------|
+| AZN-001 | Default Deny policy for all resources | MUST |
+| AZN-002 | Opaque access tokens (no JWT) | MUST |
+| AZN-003 | Role-Based Access Control | MUST |
+| AZN-004 | Session scope validation on every request | MUST |
+| AZN-005 | Immediate session termination on token revocation | MUST |
+| AZN-006 | Dynamic scope updates without reconnection | SHOULD |
 
-## Conformance Rules
+## Common Pitfalls
 
-- Default deny all requests (unless authenticated)
-- Validate access token on every message
-- Terminate session on token revocation
-- Bind token strictly to session context
-
-## Common Mistakes
-
-- Using JWT instead of opaque tokens
-- Skipping per-message validation
-- Allowing cross-session token reuse
-- Implementing role systems inside AXONS layer
+- Using JWT instead of opaque tokens → breaks AZN-002 (JWT exposes metadata, cannot be instantly revoked)
+- Implementing application-level authorization at the AXONS layer → should be delegated to subprotocol
+- Not validating access token on every message → breaks AZN-004
+- Allowing tokens to persist after session disconnect → breaks AZN-005
+- Using self-reported identity instead of certificate-extracted identity → security risk
+- Not binding tokens to specific sessions → token theft across sessions
