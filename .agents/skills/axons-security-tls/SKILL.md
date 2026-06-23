@@ -1,13 +1,5 @@
----
 name: axons-security-tls
 description: TLS 1.3 configuration, cipher suite negotiation, and handshake requirements for AXONS. Use when implementing transport security, configuring TLS libraries, or validating cipher suite compliance.
-keywords:
-  - axons
-tags:
-  - axons
-  - iot
-  - protocol
----
 
 # AXONS TLS Security
 

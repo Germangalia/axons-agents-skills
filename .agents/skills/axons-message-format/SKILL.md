@@ -1,13 +1,5 @@
----
 name: axons-message-format
 description: JSON-RPC 2.0 message envelope, header fields, payload structure, JWS compact serialization signing, and subprotocol message extension for AXONS. Use when constructing or parsing AXONS messages or implementing JWS signing.
-keywords:
-  - axons
-tags:
-  - axons
-  - iot
-  - protocol
----
 
 # AXONS Message Format
 

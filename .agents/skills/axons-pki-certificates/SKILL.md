@@ -1,13 +1,5 @@
----
 name: axons-pki-certificates
 description: X.509 certificate management, Ed25519 keys, CA chain validation, OCSP/CRL revocation checking, and mTLS authentication for AXONS. Use when generating certificates, configuring trust stores, or validating certificate chains.
-keywords:
-  - axons
-tags:
-  - axons
-  - iot
-  - protocol
----
 
 # AXONS PKI & Certificates
 

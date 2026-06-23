@@ -1,13 +1,5 @@
----
 name: axons-compliance
 description: AXONS conformance framework, certification levels, requirement ID system, and compliance testing procedures. Use when validating implementation compliance or preparing for certification.
-keywords:
-  - axons
-tags:
-  - axons
-  - iot
-  - protocol
----
 
 # AXONS Compliance & Conformance
 

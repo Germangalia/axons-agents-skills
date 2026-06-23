@@ -1,13 +1,5 @@
----
 name: axons-services-resilience
 description: Message queuing, at-least-once delivery semantics, FIFO ordering, dead letter handling, and resilience patterns for AXONS. Use when implementing reliable message delivery in unreliable network conditions.
-keywords:
-  - axons
-tags:
-  - axons
-  - iot
-  - protocol
----
 
 # AXONS Services: Resilience & Message Queuing
 
