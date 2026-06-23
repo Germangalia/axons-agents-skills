@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "skills": {
+    "axons-authorization": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-authorization/SKILL.md",
+      "computedHash": "87c9ccd63c1304212f659f55e88f4689bb19805c347f3d68e7d107650233a4b7"
+    },
+    "axons-compliance": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-compliance/SKILL.md",
+      "computedHash": "38cf1712d91fa5c677296dd367dc7fa8afc691f82933cf426f547997bf031470"
+    },
+    "axons-data-types": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-data-types/SKILL.md",
+      "computedHash": "6060eca20c196ad09a6619ad8b07eb6cac70dc38909080621bdb567ad6ee4e99"
+    },
+    "axons-foundation": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-foundation/SKILL.md",
+      "computedHash": "75553ad1adfe7cc29d1f1495ae9604834f558057fd8391875a2bada0ca8a1acf"
+    },
+    "axons-message-format": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-message-format/SKILL.md",
+      "computedHash": "37f548f4cc28d7760a2c1a88d2eaba98632c44ef1f7253944b485d02aa932e6d"
+    },
+    "axons-monitoring-logging": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-monitoring-logging/SKILL.md",
+      "computedHash": "c679de3b86510f0b5af87dee2693730b6b7dde5032ffbd2b116453c70beb61f3"
+    },
+    "axons-operations": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-operations/SKILL.md",
+      "computedHash": "cddff6e03ac9093b678cf98db7d6f01177c011b5295ee44de346e6f1e0e5e3b3"
+    },
+    "axons-pki-certificates": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-pki-certificates/SKILL.md",
+      "computedHash": "a106929fd0be97dcca904210345cd92dc072af8442ef0699d9c5e8185f55482a"
+    },
+    "axons-security-tls": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-security-tls/SKILL.md",
+      "computedHash": "7e346231ab2d543e7589a3ecd8c1e1111075d5ea25893bd56ad47ae29049787f"
+    },
+    "axons-services-resilience": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-services-resilience/SKILL.md",
+      "computedHash": "824bbdb983db9766d3e5313ed9f72ef8edc4b7586ba056f386fcc52e3fbe6637"
+    },
+    "axons-topologies": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-topologies/SKILL.md",
+      "computedHash": "cd9dcc3940d57962bcd162513e6bf7538210b6eb000cd6469854a20c42b47f18"
+    },
+    "axons-transport-websocket": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/axons-transport-websocket/SKILL.md",
+      "computedHash": "217ae056bca874dda5eb1e9f9f4ca01f5f2b38f5f7c8c2dbb8a2e62db9bd8e51"
+    },
+    "neon-postgres": {
+      "source": "Germangalia/axons-agents-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/neon-postgres/SKILL.md",
+      "computedHash": "391693eee67001639ab65474df185da3ea5cf9ee4b99badecfd64561113edbb4"
+    }
+  }
+}
