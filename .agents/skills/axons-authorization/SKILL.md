@@ -1,6 +1,12 @@
 ---
 name: axons-authorization
 description: OAuth 2.0 simplified authorization model, opaque session-bound access tokens, per-message token validation, and identity extraction from mTLS certificates for AXONS. Use when implementing session management, token issuance, or authorization checks.
+keywords:
+  - axons
+tags:
+  - axons
+  - iot
+  - protocol
 ---
 
 # AXONS Authorization

@@ -1,6 +1,12 @@
 ---
 name: axons-foundation
 description: Core concepts, terminology, scope, and architectural foundation of the AXONS protocol. Use when understanding the protocol's objectives, entity roles, network topologies, or normative language conventions.
+keywords:
+  - axons
+tags:
+  - axons
+  - iot
+  - protocol
 ---
 
 # AXONS Foundation

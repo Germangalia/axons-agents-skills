@@ -1,6 +1,12 @@
 ---
 name: axons-operations
 description: AXONS core operations including session establishment (InitRequest/InitResponse), security policy exchange, subprotocol operations, and their request-response patterns. Use when implementing session flows, operation handlers, or subprotocol integration.
+keywords:
+  - axons
+tags:
+  - axons
+  - iot
+  - protocol
 ---
 
 # AXONS Operations
