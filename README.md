@@ -1,62 +1,156 @@
-# AXONS Agents & Skills
+AXONS Agents & Skills
 
-A structured knowledge base for AI coding agents building, deploying, and testing the **AXONS protocol** (Advanced eXchange Open Nodes Security) — a secure communication protocol for IoT systems.
+A structured knowledge base for AI coding agents building, deploying, and testing the AXONS protocol (Advanced eXchange Open Nodes Security).
 
-## Overview
+AXONS is a secure IoT and distributed systems communication framework designed for machine-to-machine and agent-to-agent communication using WebSocket (WSS), TLS 1.3, mutual TLS (mTLS), and signed message exchange.
 
-This repository is a **capability registry** for AI-assisted development environments. It defines:
+This repository is published as a skills.sh skill registry for AI agent runtimes.
 
-- **Skills** — Markdown reference documents that teach an AI agent the AXONS protocol specification, domain by domain.
-- **Agents** — Specialized AI agent personas that compose skills into focused roles (architect, security implementer, test engineer, etc.).
+🔑 Keywords (for search indexing)
 
-No executable code lives here. This is pure knowledge, structured for agent consumption.
+axons, axons agents, axons protocol, skills, iot, internet of things, websocket, wss, tls, tls 1.3, mtls, mutual tls, pki, x509, ed25519, oauth2, json-rpc, secure messaging, distributed systems, event-driven architecture, protocol design, device communication, agent framework, message signing, audit logging, resilience, networking, automation
 
-## Skills
+📌 Repository Overview
 
-| Skill | Covers |
-|-------|--------|
-| **axons-foundation** | Core concepts, terminology, network entity types, scope |
-| **axons-topologies** | P2P, C2S, S2S, gateway patterns, deployment blueprints |
-| **axons-transport-websocket** | WebSocket binding, subprotocol negotiation, reconnection |
-| **axons-security-tls** | TLS 1.3 ciphers, handshake, session management |
-| **axons-pki-certificates** | X.509, Ed25519, CA chains, OCSP/CRL, mTLS |
-| **axons-authorization** | OAuth 2.0 simplified model, opaque tokens, per-message validation |
-| **axons-message-format** | JSON-RPC 2.0, JWS compact serialization, replay protection |
-| **axons-operations** | Session flows (InitRequest/InitResponse), policy exchange, error handling |
-| **axons-data-types** | UUID v7, CiString, Base64URL, ISO 8601, enumerations |
-| **axons-services-resilience** | At-least-once queuing, FIFO, dedup, dead letter handling |
-| **axons-monitoring-logging** | Structured JSON logging, hash-chained audit trails, rate limiting |
-| **axons-compliance** | Certification levels, requirement IDs, conformance testing |
-| **neon-postgres** | Neon Serverless Postgres — connection methods, SDKs, CLI |
+This repository is a capability registry for AI agents.
 
-## Agents
+It defines:
 
-| Agent | Specialty |
-|-------|-----------|
-| **protocol-architect** | System architecture, topology selection, deployment blueprints |
-| **application-developer** | JSON-RPC envelopes, JWS signing, session establishment |
-| **security-implementer** | TLS configs, certificate management, authorization code |
-| **transport-developer** | WebSocket handlers, connection state machines, reconnection |
-| **service-developer** | Message queuing, audit logging, rate limiting |
-| **test-engineer** | Conformance test suites, certification procedures |
-| **integration-specialist** | Gateway configs, protocol translation, cross-domain federation |
-| **documentation-writer** | Tutorials, API references, deployment guides |
+Skills — modular knowledge units used by AI agents
+Agents — role-based AI personas that compose skills into execution behavior
 
-## Usage
+There is no runtime application code. This repository is purely a structured knowledge system optimized for AI skill loading platforms such as skills.sh.
 
-This repository is consumed by agent platforms (e.g., OpenCode) that support skill-based knowledge loading. Skills are loaded on demand when an agent encounters a matching task. The `skills-lock.json` manifest records integrity hashes for each skill.
+📁 Repository Structure
 
-To use locally:
+All skills and agents are stored under the .agents/ directory:
 
-```bash
+.agents/
+├── skills/
+│   ├── axons-foundation/
+│   ├── axons-topologies/
+│   ├── axons-transport-websocket/
+│   ├── axons-security-tls/
+│   ├── axons-pki-certificates/
+│   ├── axons-authorization/
+│   ├── axons-message-format/
+│   ├── axons-operations/
+│   ├── axons-data-types/
+│   ├── axons-services-resilience/
+│   ├── axons-monitoring-logging/
+│   ├── axons-compliance/
+│   └── neon-postgres/
+│
+└── agents/
+    ├── protocol-architect/
+    ├── application-developer/
+    ├── security-implementer/
+    ├── transport-developer/
+    ├── service-developer/
+    ├── test-engineer/
+    ├── integration-specialist/
+    └── documentation-writer/
+🧠 AXONS Protocol (Core Concept)
+
+AXONS (Advanced eXchange Open Nodes Security) is a secure communication protocol for IoT systems and distributed agents.
+
+It is designed for secure, verifiable, and observable machine-to-machine communication.
+
+Core Features
+WebSocket (WSS) transport layer
+TLS 1.3 encrypted communication channels
+Mutual TLS (mTLS) device authentication
+Ed25519 / JWS message signing
+OAuth 2.0-style authorization model
+JSON-RPC 2.0 structured messaging
+Replay protection mechanisms
+Audit logging and traceability
+
+Protocol Version: 0.1.1 (2026-05-15)
+
+🧩 Skills
+
+Each skill is a modular knowledge unit designed for AI agent retrieval and composition.
+
+Skill	Domain
+axons-foundation	Core concepts, terminology, identity model
+axons-topologies	Network architectures (P2P, C2S, S2S, gateways)
+axons-transport-websocket	WebSocket/WSS transport, session lifecycle
+axons-security-tls	TLS 1.3 configuration and encryption flows
+axons-pki-certificates	X.509, CA chains, Ed25519, mTLS lifecycle
+axons-authorization	Token validation and message-level auth
+axons-message-format	JSON-RPC 2.0 + JWS signing + replay protection
+axons-operations	Session lifecycle and protocol state machines
+axons-data-types	UUID v7, Base64URL, ISO 8601, canonical formats
+axons-services-resilience	Retry logic, queues, deduplication, DLQ
+axons-monitoring-logging	Structured logs, audit trails, observability
+axons-compliance	Certification rules and conformance testing
+neon-postgres	Database integration for AXONS systems
+🤖 Agents
+
+Role-based AI agents composed from AXONS skills:
+
+protocol-architect — system design, topology selection, distributed architecture planning
+application-developer — JSON-RPC flows, message signing, session handling
+security-implementer — TLS, PKI, authentication, secure communication design
+transport-developer — WebSocket connection handling and state machines
+service-developer — queues, retries, logging, resilience patterns
+test-engineer — conformance testing and protocol validation
+integration-specialist — gateway and federation design
+documentation-writer — tutorials, API references, protocol documentation
+⚡ Installation (skills.sh)
+
+Install the full skill set via registry:
+
+npx skills add Germangalia/axons-agents-skills
+
+Search skills:
+
+npx skills search axons
+npx skills search websocket
+npx skills search tls
+npx skills search iot
+
+Note: Search indexing may take time depending on registry propagation, keyword weighting, and install signals.
+
+⚙️ Local Usage
+
+Clone the repository:
+
 git clone https://github.com/Germangalia/axons-agents-skills.git
-# Point your agent platform's skill directory at .agents/skills/
-```
+cd axons-agents-skills
 
-## About the AXONS Protocol
+The runtime should load skills from:
 
-AXONS (**A**dvanced e**X**change **O**pen **N**odes **S**ecurity) is a specification for secure IoT communications over WebSocket (WSS) with mandatory mTLS, Ed25519/JWS message signing, and OAuth 2.0-based authorization. Version **0.1.1** (released 2026-05-15). See `axons-foundation` for the full introduction.
+.agents/skills/
 
-## License
+and agents from:
+
+.agents/agents/
+🔍 Discoverability Notes (skills.sh)
+
+If skills do not appear in search results immediately, this may be due to:
+
+delayed indexing of new repositories
+keyword weighting and ranking heuristics
+low install/usage signals
+insufficient explicit keyword mapping inside skills
+
+This repository is optimized for indexing via:
+
+repeated semantic keywords
+explicit AXONS protocol references
+IoT + security + transport domain tagging
+🧠 Design Philosophy
+
+AXONS Skills are designed to be:
+
+modular and composable
+agent-readable and retrieval-friendly
+protocol-first (not application-first)
+secure-by-design
+optimized for IoT and distributed systems
+compatible with AI orchestration platforms
+📌 License
 
 Not yet declared.
